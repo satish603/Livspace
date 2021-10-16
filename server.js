@@ -41,15 +41,15 @@ console.log("We are live on Port 3000");
 // app.get('/', function (req, res) {
 //     res.render('pages/index');
 // });
-// app.get('/', function (req, res) {
-//     var listnames = ["Louise", "Sadie", "Erik", "Raph", "Gina"];
+app.get('/', function (req, res) {
+    var listnames = ["Louise", "Sadie", "Erik", "Raph", "Gina"];
     
-//     // Render index page
-//     res.render('pages/index', {
-//         // EJS variable and server-side variable
-//         listnames: listnames,
-//     });
-// });
+    // Render index page
+    res.render('pages/index', {
+        // EJS variable and server-side variable
+        listnames: listnames,
+    });
+});
 
 
 
