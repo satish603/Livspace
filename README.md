@@ -1,2 +1,2 @@
-# This project is under progress
+# This project is under development
 # Livspace
