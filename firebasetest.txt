@@ -1,0 +1,66 @@
+
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
+const serviceAccount = require('./serviceAccountKey.json');
+
+initializeApp({
+  credential: cert(serviceAccount)
+});
+
+const db = getFirestore();
+
+const doSomething = async () => {
+    const cityRef = db.collection('hello').doc('world');
+const doc = await cityRef.get();
+if (!doc.exists) {
+  console.log('No such document!');
+} else {
+  console.log('Document data:', doc.data());
+}
+
+  }
+doSomething();
+
+
+const doSomething = async () => {
+    const citiesRef = db.collection('live');
+const snapshot = await citiesRef.get();
+
+snapshot.forEach(doc => {
+  console.log(doc.id, '=>', doc.data());
+});
+
+  }
+
+<% snapshot.forEach(function(Projects) { %>
+        <p><%= Projects %></p>
+        <% }); %>
+
+
+
+
+
+
+
+
+
+
+     <!-- <% listnames.forEach(function(name) { %>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                   <img src="assets/img/portfolio/img4.jpg" class="card-img-top" alt="img">
+                   <div class="card-body">
+                     
+                    <h5><%= name %></h5>
+                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                   </div>
+                 </div>
+             </div>
+
+            <% }); %> -->
+
+
+
+<% listnames.forEach(function(name) { %>
+        <p><%= name %></p>
+        <% }); %>
