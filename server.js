@@ -38,10 +38,10 @@ console.log("We are live on Port 3000");
 
 // *** GET Routes - display pages ***
 // Root Route
-// app.get('/', function (req, res) {
-//     res.render('pages/index');
-// });
 app.get('/', function (req, res) {
+    res.render('pages/index');
+});
+app.get('/array', function (req, res) {
     var listnames = ["Louise", "Sadie", "Erik", "Raph", "Gina"];
     
     // Render index page
@@ -59,7 +59,34 @@ str.forEach(function(data){
     console.log(data.name);
 });
 
-app.get('/', function(req, res){
-    res.render('pages/index', {str: JSON.stringify(str) });
+app.get('/getdata',async function(req, res){
+  let events = [];
+  const snapshot = await db.collection('live').get()
+    console.log(snapshot.docs.map(doc => events.push(doc.data())));
+
+    res.render('pages/index', {
+      listnames: events
+     });
 });
 
+const projectdata1 = async () => {
+  let events = [];
+  const snapshot = await db.collection('live').get()
+    console.log(snapshot.docs.map(doc => events.push(doc.data())));
+    // console.log(events[0].info)
+    return events
+}
+// projectdata1()
+
+// const projectdata1 = async () => {
+//   let events = [];
+//   const dataref = db.collection('live');
+// const snapshot = await dataref.get();
+// snapshot.forEach(doc => {
+// console.log(events.push(doc.data()));
+// });
+// snapshot.forEach((doc) => {
+//   console.log(doc.data());
+// });
+// }
+// projectdata1()
