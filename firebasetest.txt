@@ -64,3 +64,49 @@ snapshot.forEach(doc => {
 <% listnames.forEach(function(name) { %>
         <p><%= name %></p>
         <% }); %>
+
+
+
+// projectdata1()
+
+// const projectdata1 = async () => {
+//   let events = [];
+//   const dataref = db.collection('live');
+// const snapshot = await dataref.get();
+// snapshot.forEach(doc => {
+// console.log(events.push(doc.data()));
+// });
+// snapshot.forEach((doc) => {
+//   console.log(doc.data());
+// });
+// }
+// projectdata1()
+
+
+const projectdata1 = async () => {
+  let events = [];
+  const snapshot = await db.collection('live').get()
+    console.log(snapshot.docs.map(doc => events.push(doc.data())));
+    // console.log(events[0].info)
+    return events
+}
+
+
+
+app.get('/array', function (req, res) {
+    var listnames = ["Louise", "Sadie", "Erik", "Raph", "Gina"];
+    
+    // Render index page
+    res.render('pages/index', {
+        // EJS variable and server-side variable
+        listnames: listnames,
+    });
+});
+
+
+
+var str = JSON.parse('[{"name":"bill", "age":"26"}, {"name":"jeff", "age":"32"}]');
+
+str.forEach(function(data){
+    console.log(data.name);
+});
